@@ -2,7 +2,6 @@ FROM alpine:edge
 
 ENV PUID="${PUID:-1000}"
 ENV PGID="${PGID:-1000}"
-ENV PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 
 RUN \
   apk upgrade --no-cache \
