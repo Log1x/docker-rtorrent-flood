@@ -31,5 +31,5 @@ fi
 # Remove previous session lock
 [ -r /data/.session/rtorrent.lock ] && rm -f /data/.session/rtorrent.lock
 
-chown -R nobody:nobody /data /config /tmp /usr/local/flood
+chown -R $PUID:$PGID /data /config /tmp /usr/local/flood
 exec "${@}"

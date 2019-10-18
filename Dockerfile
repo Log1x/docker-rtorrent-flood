@@ -7,6 +7,7 @@ ENV PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 RUN \
   apk upgrade --no-cache \
     && apk add -U --no-cache \
+      su-exec \
       supervisor \
       make \
       gcc \
