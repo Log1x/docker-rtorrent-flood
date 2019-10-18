@@ -5,6 +5,7 @@ set -euo pipefail
 # Create directories
 [ ! -r /config/db ] && mkdir -p /config/db
 [ ! -r /config/ssl ] && mkdir -p /config/ssl
+[ ! -r /config/logs ] && mkdir -p /config/logs
 [ ! -r /data/.watched ] && mkdir -p /data/.watched
 [ ! -r /data/.session ] && mkdir -p /data/.session
 
@@ -29,5 +30,5 @@ fi
 # Remove previous session lock
 [ -r /data/.session/rtorrent.lock ] && rm -f /data/.session/rtorrent.lock
 
-chown -R $PUID:$PGID /data /config /tmp /usr/local/flood /var/log
+chown -R $PUID:$PGID /data /config /tmp /usr/local/flood
 exec "${@}"
