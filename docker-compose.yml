@@ -1,6 +1,0 @@
-version: '2'
-services:
-    rtorrent-flood:
-      image: log1x/rtorrent-flood:latest
-      container_name: rtorrent-flood
-      tty: true

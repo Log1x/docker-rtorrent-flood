@@ -5,13 +5,12 @@ set -euo pipefail
 # Create directories
 [ ! -r /config/db ] && mkdir -p /config/db
 [ ! -r /config/ssl ] && mkdir -p /config/ssl
-[ ! -r /config/logs ] && mkdir -p /config/logs
-[ ! -r /data/.watched ] && mkdir -p /data/.watched
+[ ! -r /data/.watch ] && mkdir -p /data/.watch
 [ ! -r /data/.session ] && mkdir -p /data/.session
 
 # Move default configuration
 [ ! -r /config/rtorrent.rc ] && cp /defaults/rtorrent.rc /config/rtorrent.rc
-[ ! -r /config/config.js ] && cp /defaults/flood.js /config/flood.js
+[ ! -r /config/flood.js ] && cp /defaults/flood.js /config/flood.js
 [ ! -r /config/supervisord.conf ] && cp /defaults/supervisord.conf /config/supervisord.conf
 
 # Symlink Flood config

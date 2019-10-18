@@ -9,7 +9,7 @@ Want a barebones rTorrent + Flood container that works?
 ## Usage
 
 ```bash
-$ docker run -itd \
+$ docker run -d \
   -p 3000:3000 \
   -p 49184:49184 \
   -p 49184:49184/udp \
@@ -18,8 +18,32 @@ $ docker run -itd \
   log1x/rtorrent-flood
 ```
 
+### Web UI
+
 - **Flood (Web UI):** `http://<host>:3000`
 - **Unix Socket**: `/tmp/.rtorrent.sock`
+
+### Directory Structure
+
+```bash
+├── config/              # Configuration
+│   ├── db/              # Flood DB  
+│   ├── ssl/             # Self-signed SSL Certs
+│   ├── rtorrent.rc      # rTorrent Configuration
+│   ├── flood.js         # Flood Configuration
+│   └── supervisord.conf # Supervisor Configuration
+└── data/                # Downloads
+    ├── .session         # Sessions
+    └── .watch           # Watched Folder
+```
+
+### unRAID
+
+Add the following template repository to unRAID:
+
+```sh
+https://github.com/log1x/docker-templates
+```
 
 ## Bug Reports
 
