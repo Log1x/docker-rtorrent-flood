@@ -4,7 +4,20 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/log1x/rtorrent-flood?style=flat-square)
 ![Docker Stars](https://img.shields.io/docker/stars/log1x/rtorrent-flood?style=flat-square)
 
-Want a barebones rTorrent + Flood container that works?
+Here's a performant, minimal, no-bullshit Alpine container for rTorrent & Flood.
+
+#### Features
+
+* Based on Alpine Linux
+* Uses the `edge` branch for latest releases
+* Sane directory structure
+* Sane default configuration
+* Fully configurable
+* Works without `tty: true`
+* Flood runs with SSL
+* Flood actually connects to the Unix socket (first try!)
+* Automatically unpacks RAR releases
+* unRAID template available
 
 ## Usage
 
