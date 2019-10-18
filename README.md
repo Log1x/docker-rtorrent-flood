@@ -32,9 +32,11 @@ $ docker run -d \
 │   ├── rtorrent.rc      # rTorrent Configuration
 │   ├── flood.js         # Flood Configuration
 │   └── supervisord.conf # Supervisor Configuration
-└── data/                # Downloads
-    ├── .session         # Sessions
-    └── .watch           # Watched Folder
+├── data/                # Downloads
+│   ├── .session         # Sessions
+│   └── .watch           # Watched Folder
+├── tmp/                 # Temporary Files
+│   └── .rtorrent.sock   # rTorrent Unix Socket
 ```
 
 ### unRAID
