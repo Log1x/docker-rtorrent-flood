@@ -12,6 +12,7 @@ set -euo pipefail
 # Move default configuration
 [ ! -r /config/rtorrent.rc ] && cp /defaults/rtorrent.rc /config/rtorrent.rc
 [ ! -r /config/config.js ] && cp /defaults/flood.js /config/flood.js
+[ ! -r /config/supervisord.conf ] && cp /defaults/supervisord.conf /config/supervisord.conf
 
 # Symlink Flood config
 [ -r /usr/local/flood/config.js ] && rm -f /usr/local/flood/config.js
@@ -30,5 +31,5 @@ fi
 # Remove previous session lock
 [ -r /data/.session/rtorrent.lock ] && rm -f /data/.session/rtorrent.lock
 
-chown -R $PUID:$PGID /data /config /tmp /usr/local/flood
+chown -R nobody:nobody /data /config /tmp /usr/local/flood
 exec "${@}"

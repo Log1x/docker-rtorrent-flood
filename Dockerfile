@@ -5,10 +5,9 @@ ENV PGID="${PGID:-1000}"
 ENV PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 
 RUN \
-  echo '@stable http://dl-cdn.alpinelinux.org/alpine/v3.6/main' >> /etc/apk/repositories \
-  && apk upgrade --no-cache \
+  apk upgrade --no-cache \
     && apk add -U --no-cache \
-      su-exec@stable \
+      supervisor \
       make \
       gcc \
       build-base \
@@ -43,4 +42,4 @@ VOLUME /data /config
 LABEL description "rTorrent with Flood"
 
 ENTRYPOINT ["entrypoint.sh"]
-CMD ["run.sh"]
+CMD ["/usr/bin/supervisord", "-c", "/config/supervisord.conf"]
