@@ -9,7 +9,7 @@ set -euo pipefail
 [ ! -r /data/.session ] && mkdir -p /data/.session
 
 # Move default configuration
-[ ! -r /config/.rtorrent.rc ] && cp /defaults/rtorrent.rc /config/.rtorrent.rc
+[ ! -r /config/rtorrent.rc ] && cp /defaults/rtorrent.rc /config/rtorrent.rc
 [ ! -r /config/config.js ] && cp /defaults/flood.js /config/flood.js
 
 # Symlink Flood config

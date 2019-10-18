@@ -10,7 +10,7 @@ const CONFIG = {
     socket: true,
     socketPath: '/tmp/.rtorrent.sock'
   },
-  ssl: true,
+  ssl: false,
   sslKey: '/config/ssl/key.pem',
   sslCert: '/config/ssl/cert.pem',
 };

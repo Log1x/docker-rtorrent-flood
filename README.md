@@ -4,22 +4,22 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/log1x/rtorrent-flood?style=flat-square)
 ![Docker Stars](https://img.shields.io/docker/stars/log1x/rtorrent-flood?style=flat-square)
 
-...
+Want a barebones rTorrent + Flood container that works?
 
 ## Usage
 
 ```bash
-$ docker run -d \
-  --name=flood \
-  -p 6600:6600 \
-  -p 6680:6680 \
-  -p 8000:8000 \
+$ docker run -itd \
+  -p 3000:3000 \
+  -p 49184:49184 \
+  -p 49184:49184/udp \
   -v <path for data files>:/data \
   -v <path for config files>:/config \
   log1x/rtorrent-flood
 ```
 
-- **Iris (Web UI):** `http://<host>:6680`
+- **Flood (Web UI):** `http://<host>:3000`
+- **Unix Socket**: `/tmp/.rtorrent.sock`
 
 ## Bug Reports
 
