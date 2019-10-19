@@ -36,7 +36,7 @@ RUN \
 
 COPY   rootfs /
 RUN    chmod +x /usr/local/bin/*
-EXPOSE 3000 49184 49184/udp
+EXPOSE 3000 3001 49184 49184/udp
 VOLUME /data /config
 
 LABEL description "rTorrent with Flood"
