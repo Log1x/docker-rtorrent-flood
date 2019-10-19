@@ -6,6 +6,8 @@
 
 Here's a performant, minimal, no-bullshit Alpine container for rTorrent & Flood.
 
+Please be responsible and use a reverse proxy & authentication if you plan on exposing Flood and/or the nginx (rTorrent socket) instances outside of your network.
+
 #### Features
 
 * Based on Alpine Linux
@@ -14,8 +16,9 @@ Here's a performant, minimal, no-bullshit Alpine container for rTorrent & Flood.
 * Sane default configuration
 * Fully configurable
 * Works without `tty: true`
-* Flood runs with SSL
 * Flood actually connects to the Unix socket (first try!)
+* Unix socket optionally available through nginx at `:3001` for Sonarr, Radarr, ...
+* Auto-service restart on crash (supervisord)
 * Automatically unpacks RAR releases
 * unRAID template available
 
@@ -35,16 +38,17 @@ $ docker run -d \
 ### Web UI
 
 - **Flood (Web UI):** `http://<host>:3000`
-- **rTorrent XMLRPC**: `<host>:3001`
+- **rTorrent Unix Socket**: `/tmp/.rtorrent.sock`
+- **rTorrent Socket Endpoint**: `http://<host>:3001`
 
 ### Directory Structure
 
 ```bash
 ├── config/              # Configuration
 │   ├── db/              # Flood DB  
-│   ├── ssl/             # Self-signed SSL Certs
 │   ├── rtorrent.rc      # rTorrent Configuration
 │   ├── flood.js         # Flood Configuration
+│   ├── nginx.conf       # nginx Configuration
 │   └── supervisord.conf # Supervisor Configuration
 ├── data/                # Downloads
 │   ├── .session         # Sessions
@@ -55,7 +59,7 @@ $ docker run -d \
 
 Add the following template repository to unRAID:
 
-```sh
+```bash
 https://github.com/log1x/docker-templates
 ```
 

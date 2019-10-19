@@ -1,5 +1,3 @@
-system.daemon.set = true
-
 scgi_local = /tmp/.rtorrent.sock
 
 encoding_list = UTF-8
