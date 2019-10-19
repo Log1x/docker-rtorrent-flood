@@ -24,6 +24,7 @@ Here's a performant, minimal, no-bullshit Alpine container for rTorrent & Flood.
 ```bash
 $ docker run -d \
   -p 3000:3000 \
+  -p 3001:3001 \
   -p 49184:49184 \
   -p 49184:49184/udp \
   -v <path for data files>:/data \
@@ -34,7 +35,7 @@ $ docker run -d \
 ### Web UI
 
 - **Flood (Web UI):** `http://<host>:3000`
-- **Unix Socket**: `/tmp/.rtorrent.sock`
+- **rTorrent XMLRPC**: `<host>:3001`
 
 ### Directory Structure
 
@@ -48,8 +49,6 @@ $ docker run -d \
 ├── data/                # Downloads
 │   ├── .session         # Sessions
 │   └── .watch           # Watched Folder
-├── tmp/                 # Temporary Files
-│   └── .rtorrent.sock   # rTorrent Unix Socket
 ```
 
 ### unRAID

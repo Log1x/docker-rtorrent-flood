@@ -11,6 +11,7 @@ RUN \
       make \
       gcc \
       build-base \
+      nginx \
       openssl \
       python \
       nodejs \
