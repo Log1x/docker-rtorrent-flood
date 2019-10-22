@@ -35,6 +35,10 @@ RUN \
     && npm prune --production \
   && rm -f config.js
 
+RUN \
+  addgroup -g ${PGID} torrent \
+    && adduser -G torrent -D -u ${PUID} torrent
+
 COPY   rootfs /
 RUN    chmod +x /usr/local/bin/*
 EXPOSE 3000 3001 49184 49184/udp

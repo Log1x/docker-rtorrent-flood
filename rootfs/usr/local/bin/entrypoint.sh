@@ -4,7 +4,6 @@ set -euo pipefail
 
 # Create directories
 [ ! -r /config/db ] && mkdir -p /config/db
-[ ! -r /config/ssl ] && mkdir -p /config/ssl
 [ ! -r /data/.watch ] && mkdir -p /data/.watch
 [ ! -r /data/.session ] && mkdir -p /data/.session
 
@@ -21,5 +20,5 @@ set -euo pipefail
 # Remove previous session lock
 [ -r /data/.session/rtorrent.lock ] && rm -f /data/.session/rtorrent.lock
 
-chown -R $PUID:$PGID /data /config /tmp /usr/local/flood /var/lib/nginx
+chown -R $PUID:$PGID /data /config /tmp /usr/local/flood
 exec "${@}"

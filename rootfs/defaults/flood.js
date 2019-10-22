@@ -7,14 +7,9 @@ const CONFIG = {
   pollInterval: 1000 * 5,
   secret: 'tsunami',
   scgi: {
-    host: 'localhost',
-    port: 3001,
     socket: true,
     socketPath: '/tmp/.rtorrent.sock'
   },
-  ssl: false,
-  sslKey: '/config/ssl/key.pem',
-  sslCert: '/config/ssl/cert.pem',
 };
 
 module.exports = CONFIG;
