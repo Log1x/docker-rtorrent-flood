@@ -12,6 +12,7 @@ set -euo pipefail
 [ ! -r /config/flood.js ] && cp /defaults/flood.js /config/flood.js
 [ ! -r /config/supervisord.conf ] && cp /defaults/supervisord.conf /config/supervisord.conf
 [ ! -r /config/nginx.conf ] && cp /defaults/nginx.conf /config/nginx.conf
+[ ! -r /config/htpasswd ] && cp /defaults/htpasswd /config/htpasswd
 
 # Symlink Flood config
 [ -r /usr/local/flood/config.js ] && rm -f /usr/local/flood/config.js
