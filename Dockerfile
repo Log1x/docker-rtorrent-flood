@@ -10,6 +10,7 @@ RUN \
       supervisor \
       make \
       gcc \
+      git \
       build-base \
       nginx \
       openssl \
@@ -20,9 +21,13 @@ RUN \
       rtorrent \
       mktorrent \
       mediainfo \
-  && ln -s /usr/bin/mktorrent-borg /usr/local/bin/mktorrent \
+  && ln -s /usr/bin/mktorrent /usr/local/bin/mktorrent \
   && ln -s /usr/bin/mediainfo /usr/local/bin/mediainfo \
   && rm -rf /var/cache/apk/* /tmp/*
+
+RUN \
+  git clone https://github.com/mirror/xmlrpc-c /tmp/xmlrpc \
+    && cd /tmp/xmlrpc/advanced && ./configure && make && make install
 
 RUN \
   mkdir -p /usr/local/flood \
