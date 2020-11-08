@@ -14,7 +14,7 @@ RUN \
       build-base \
       nginx \
       openssl \
-      python \
+      python3 \
       nodejs \
       nodejs-npm \
       unrar \
