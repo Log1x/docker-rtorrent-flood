@@ -21,5 +21,6 @@ set -euo pipefail
 # Remove previous session lock
 [ -r /data/.session/rtorrent.lock ] && rm -f /data/.session/rtorrent.lock
 
-chown -R $PUID:$PGID /data /config /tmp /usr/local/flood
+# Removed /data because this takes FOREVER
+chown -R $PUID:$PGID /config /tmp /usr/local/flood
 exec "${@}"
