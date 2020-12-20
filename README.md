@@ -10,17 +10,16 @@ Please be responsible and use a reverse proxy & authentication if you plan on ex
 
 #### Features
 
-* Based on Alpine Linux
-* Uses the `edge` branch for latest releases
-* Sane directory structure
-* Sane default configuration
-* Fully configurable
-* Works without `tty: true`
-* Flood actually connects to the Unix socket (first try!)
-* Unix socket optionally available through nginx at `:3001` for Sonarr, Radarr, ...
-* Auto-service restart on crash (supervisord)
-* Automatically unpacks RAR releases
-* unRAID template available
+- Based on Alpine Linux (Edge)
+- Sane directory structure
+- Sane default configuration
+- Fully configurable
+- Works without `tty: true`
+- Flood actually connects to the Unix socket (first try!)
+- Unix socket optionally available through nginx at `:3001` for Sonarr, Radarr, ...
+- Auto-service restart on crash (supervisord)
+- Automatically unpacks RAR releases
+- unRAID template available
 
 ## Usage
 
@@ -45,7 +44,7 @@ $ docker run -d \
 
 ```bash
 ├── config/              # Configuration
-│   ├── db/              # Flood DB  
+│   ├── db/              # Flood DB
 │   ├── rtorrent.rc      # rTorrent Configuration
 │   ├── flood.js         # Flood Configuration
 │   ├── nginx.conf       # nginx Configuration
