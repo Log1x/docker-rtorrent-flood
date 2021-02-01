@@ -8,17 +8,14 @@ RUN \
     && apk add -U --no-cache \
       su-exec \
       supervisor \
-      make \
-      gcc \
       git \
-      build-base \
       nginx \
       openssl \
-      python3 \
       nodejs \
       nodejs-npm \
       unrar \
       rtorrent \
+      xmlrpc-c-dev \
       mktorrent \
       mediainfo \
   && ln -s /usr/bin/mktorrent /usr/local/bin/mktorrent \
@@ -26,25 +23,14 @@ RUN \
   && rm -rf /var/cache/apk/* /tmp/*
 
 RUN \
-  git clone https://github.com/mirror/xmlrpc-c /tmp/xmlrpc \
-    && cd /tmp/xmlrpc/advanced && ./configure && make && make install
-
-RUN \
-  mkdir -p /usr/local/flood \
-    && cd /usr/local/flood \
-  && wget -qO- https://github.com/jfurrow/flood/archive/master.tar.gz | tar xz --strip 1 \
-    && cp config.template.js config.js \
-  && npm install \
-    && npm cache clean --force \
-    && npm run build \
-    && npm prune --production \
-  && rm -f config.js
+  npm install --global flood
 
 RUN \
   addgroup -g ${PGID} torrent \
     && adduser -G torrent -D -u ${PUID} torrent
 
 COPY   rootfs /
+RUN    mkdir -p /run/nginx
 RUN    chmod +x /usr/local/bin/*
 EXPOSE 3000 3001 49184 49184/udp
 VOLUME /data /config

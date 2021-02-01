@@ -8,7 +8,7 @@ directory = /data
 session = /data/.session
 encryption = allow_incoming, try_outgoing, enable_retry
 trackers.use_udp.set = yes
-dht.mode.set = off
+dht.mode.set = no
 protocol.pex.set = no
 
 min_peers = 1
@@ -19,10 +19,10 @@ max_uploads = 15
 
 network.xmlrpc.size_limit.set = 10000000
 
-schedule = watch_directory,1,1,"load.start=/data/.watch/*.torrent"
+schedule = watch_directory,5,5,"load.start=/data/.watch/*.torrent"
 schedule = untied_directory,5,5,"stop_untied=/data/.watch/*.torrent"
 schedule = scgi_permission,0,0,"execute.nothrow=chmod,\"g+w,o=\",/tmp/.rtorrent.sock"
 schedule = insuffici#ent_disk_space,1,30,close_low_diskspace=500M
 
-method.set_key=event.download.finished,unrar,"execute={/usr/local/bin/unrar.sh,$d.base_path=}"
-method.set_key=event.download.inserted_new,loaded_time,"d.custom.set=addtime,$cat=$system.time=;d.save_full_session="
+method.set_key = event.download.finished,unrar,"execute={/usr/local/bin/unrar.sh,$d.base_path=}"
+method.set_key = event.download.inserted_new,loaded_time,"d.custom.set=addtime,$cat=$system.time=;d.save_full_session="
