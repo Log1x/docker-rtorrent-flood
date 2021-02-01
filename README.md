@@ -37,7 +37,7 @@ $ docker run -d \
 ### Web UI
 
 - **Flood (Web UI):** `http://<host>:3000`
-- **rTorrent Unix Socket**: `/tmp/.rtorrent.sock`
+- **rTorrent Unix Socket**: `/tmp/rtorrent.sock`
 - **rTorrent Socket Endpoint**: `http://admin:socket@<host>:3001`
 
 ### Directory Structure

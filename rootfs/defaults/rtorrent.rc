@@ -1,28 +1,40 @@
-scgi_local = /tmp/.rtorrent.sock
+method.insert = cfg.basedir,  private|const|string, (cat,"/config/")
+method.insert = cfg.download, private|const|string, (cat,"/data/")
+method.insert = cfg.session,  private|const|string, (cat,(cfg.basedir),".session/")
+method.insert = cfg.watch,    private|const|string, (cat,(cfg.download),".watch/")
 
-encoding_list = UTF-8
-port_range = 49184-49184
-port_random = no
-check_hash = no
-directory = /data
-session = /data/.session
-encryption = allow_incoming, try_outgoing, enable_retry
+execute.throw = sh, -c, (cat,\
+    "mkdir -p \"",(cfg.download),"\" ",\
+    "\"",(cfg.session),"\" ",\
+    "\"",(cfg.watch),"\" ")
+
+session.path.set = (cat, (cfg.session))
+directory.default.set = (cat, (cfg.download))
+
+encoding.add = utf8
+system.file.allocate.set = 0
+pieces.hash.on_completion.set = no
+
+dht.mode.set = disable
 trackers.use_udp.set = yes
-dht.mode.set = no
 protocol.pex.set = no
+protocol.encryption.set = allow_incoming,try_outgoing,enable_retry,prefer_plaintext
 
-min_peers = 1
-max_peers = 100
-min_peers_seed = 1
-max_peers_seed = 50
-max_uploads = 15
+network.port_range.set = 49184-49184
+network.port_random.set = no
+network.max_open_files.set = 1024
+network.xmlrpc.size_limit.set = 20M
 
-network.xmlrpc.size_limit.set = 10000000
+throttle.max_uploads.set = 1024
+throttle.max_uploads.global.set = 1024
+throttle.max_downloads.global.set = 1024
+throttle.min_peers.normal.set = 1
+throttle.global_down.max_rate.set_kb = 0
+throttle.global_up.max_rate.set_kb = 0
 
-schedule = watch_directory,5,5,"load.start=/data/.watch/*.torrent"
-schedule = untied_directory,5,5,"stop_untied=/data/.watch/*.torrent"
-schedule = scgi_permission,0,0,"execute.nothrow=chmod,\"g+w,o=\",/tmp/.rtorrent.sock"
-schedule = insuffici#ent_disk_space,1,30,close_low_diskspace=500M
+schedule2 = monitor_diskspace, 15, 60, ((close_low_diskspace, 1000M))
+schedule2 = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "*.torrent")))
 
-method.set_key = event.download.finished,unrar,"execute={/usr/local/bin/unrar.sh,$d.base_path=}"
-method.set_key = event.download.inserted_new,loaded_time,"d.custom.set=addtime,$cat=$system.time=;d.save_full_session="
+system.daemon.set = true
+network.scgi.open_local = (cat, "/tmp/rtorrent.sock")
+execute.nothrow = chmod,770,(cat, "/tmp/rtorrent.sock")

@@ -4,26 +4,23 @@ ENV PUID="${PUID:-1000}"
 ENV PGID="${PGID:-1000}"
 
 RUN \
-  apk upgrade --no-cache \
-    && apk add -U --no-cache \
-      su-exec \
-      supervisor \
-      git \
-      nginx \
-      openssl \
-      nodejs \
-      nodejs-npm \
-      unrar \
-      rtorrent \
-      xmlrpc-c-dev \
-      mktorrent \
-      mediainfo \
-  && ln -s /usr/bin/mktorrent /usr/local/bin/mktorrent \
-  && ln -s /usr/bin/mediainfo /usr/local/bin/mediainfo \
+  apk add -U --no-cache \
+    su-exec \
+    supervisor \
+    git \
+    nginx \
+    openssl \
+    nodejs \
+    nodejs-npm \
+    unrar \
+    rtorrent \
+    xmlrpc-c-dev \
+    mediainfo \
   && rm -rf /var/cache/apk/* /tmp/*
 
 RUN \
-  npm install --global flood
+  npm install --global flood \
+    npm cache clean
 
 RUN \
   addgroup -g ${PGID} torrent \
