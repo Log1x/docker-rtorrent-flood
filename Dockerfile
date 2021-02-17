@@ -13,6 +13,7 @@ RUN \
     nodejs \
     nodejs-npm \
     unrar \
+    python3 \
     rtorrent \
     xmlrpc-c-dev \
     mediainfo \
