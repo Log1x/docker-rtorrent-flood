@@ -5,18 +5,18 @@ ENV PGID="${PGID:-1000}"
 
 RUN \
   apk add -U --no-cache \
-    su-exec \
-    supervisor \
     git \
+    mediainfo \
     nginx \
-    openssl \
     nodejs \
     nodejs-npm \
-    unrar \
-    python3 \
+    openssl \
+    py3-setuptools \
     rtorrent \
+    su-exec \
+    supervisor \
+    unrar \
     xmlrpc-c-dev \
-    mediainfo \
   && rm -rf /var/cache/apk/* /tmp/*
 
 RUN \
