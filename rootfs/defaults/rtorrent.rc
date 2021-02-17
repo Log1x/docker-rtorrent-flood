@@ -35,7 +35,7 @@ throttle.global_up.max_rate.set_kb = 0
 schedule2 = monitor_diskspace, 15, 60, ((close_low_diskspace, 1000M))
 schedule2 = watch_start, 10, 10, ((load.start_verbose, (cat, (cfg.watch), "*.torrent")))
 
-method.set_key = event.download.finished,unrar,"execute={/usr/local/bin/unrar.sh,$d.base_path=}"
+method.set_key = event.download.finished,unrar,"execute2={/usr/local/bin/unrar.sh,$d.base_path=}"
 method.set_key = event.download.inserted_new,loaded_time,"d.custom.set=addtime,$cat=$system.time=;d.save_full_session="
 
 system.daemon.set = true
