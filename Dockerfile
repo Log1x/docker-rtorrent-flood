@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.14
 
 ENV PUID="${PUID:-1000}"
 ENV PGID="${PGID:-1000}"
@@ -10,7 +10,7 @@ RUN \
     mediainfo \
     nginx \
     nodejs \
-    nodejs-npm \
+    npm \
     openssl \
     py3-setuptools \
     rtorrent \
