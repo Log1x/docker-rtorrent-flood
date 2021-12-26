@@ -10,5 +10,7 @@ set -euo pipefail
 [ ! -r /config/.session ] && mkdir -p /config/.session
 [ ! -r /data/.watch ] && mkdir -p /data/.watch
 
+[ -r /config/.session/rtorrent.lock ] && rm -f /config/.session/rtorrent.lock
+
 chown -R $PUID:$PGID /config /data/.watch
 exec "${@}"
