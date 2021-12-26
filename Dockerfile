@@ -5,6 +5,7 @@ ENV PGID="${PGID:-1000}"
 
 RUN \
   apk add -U --no-cache \
+    findutils \
     git \
     mediainfo \
     nginx \
