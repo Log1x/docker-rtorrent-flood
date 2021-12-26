@@ -10,7 +10,7 @@ Please be responsible and use a reverse proxy & authentication if you plan on ex
 
 #### Features
 
-- Based on Alpine Linux (Edge)
+- Based on Alpine Linux
 - Sane directory structure
 - Sane default configuration
 - Fully configurable
@@ -44,13 +44,13 @@ $ docker run -d \
 
 ```bash
 ├── config/              # Configuration
+│   ├── .session         # Sessions
 │   ├── db/              # Flood DB
 │   ├── rtorrent.rc      # rTorrent Configuration
 │   ├── flood.js         # Flood Configuration
 │   ├── nginx.conf       # nginx Configuration
 │   └── supervisord.conf # Supervisor Configuration
 ├── data/                # Downloads
-│   ├── .session         # Sessions
 │   └── .watch           # Watched Folder
 ```
 
